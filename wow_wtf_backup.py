@@ -3,6 +3,13 @@ import zipfile
 import time
 import json
 
+### Config File template
+#{
+#    "backup_dir": "/home/user/backup",
+#    "source_dir": "/home/user/source"
+#}
+
+
 with open("wow_wtf_backup_config.json") as config_file:
     config = json.load(config_file)
 
