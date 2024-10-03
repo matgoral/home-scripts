@@ -1,11 +1,15 @@
 import os
 import zipfile
 import time
+import json
+
+with open("wow_wtf_backup_config.json") as config_file:
+    config = json.load(config_file)
 
 # Define the source folder and destination path
-source_folder = r"C:\Games\World of Warcraft\_retail_\WTF"  
+source_folder = config['source_dir']
 # Define the target folder where the ZIP will be moved
-backup_folder = r"C:\Users\matgo\OneDrive\BACKUP\world_of_warcraft"
+backup_folder = config['backup_dir']
 timestr = time.strftime("%Y%m%d")
 zip_file_name = "wtf_backup_" + timestr + ".zip"
 zip_file_path = os.path.join(backup_folder, zip_file_name)
@@ -23,7 +27,7 @@ with zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
             zipf.write(file_path, os.path.relpath(file_path, source_folder))
 
 
-print(f"ZIP file has been created and moved to {backup_folder} successfully.")
+print(f"ZIP file has been created successfully.")
 # Log to destination folder
 log_file = os.path.join(backup_folder, "log.txt")
 with open(log_file, 'a') as log:
