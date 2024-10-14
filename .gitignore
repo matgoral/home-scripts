@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#anbsible vault
+ansible/group_vars/all/vault.yml
+
 # C extensions
 *.so
 
